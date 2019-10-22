@@ -2,25 +2,27 @@
 <html>
     <head>
         <title>Ruth's blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="page-header">
+        <div class="page-header flex flex-col-container" >
+            
             {% if user.is_authenticated %}
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             {% endif %}
-            <h1><a href="/">Ruth's Story</a></h1>
-            <ul>
-                <li><a href="/">Life Events</a></li>
-                <li><a href="/">Photos</a></li>
-                <li><a href="/">Bio</a></li>
-            </ul>
+            <div class="flex flex-row-container">
+                <h1 class="flex"><a href="/">Ruth's Story</a></h1>
+                <img src="code.jpeg" alt="code">
+
+                <ul class="flex flex-col-container links"> 
+                    <li><a href="/">Life Events</a></li>
+                    <li><a href="/">Photos</a></li>
+                    <li><a href="/">Bio</a></li>
+                </ul>
+            </div>
             
         </div>
-        <div class="content container">
+        <div class="content container flex flex-col-container">
             <div class="row">
                 <div class="col-md-8">
                 {% block content %}
