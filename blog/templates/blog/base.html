@@ -5,26 +5,31 @@
         <title>MomWebDevity</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, user-scalable=no, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
         <style>
             .navbar .navbar-brand {
                 color: rgba(255, 255, 255, 0.85);
                 font-size: 1rem;
-              
-                }
+            
+            }
 
             .jumbotron {
-    
-                background-image:url('{{ STATIC_URL }}static/css/code.jpg');
-                background-repeat:no-repeat;
 
+                background-image: url('static/css/code.jpg');
+                background-repeat:no-repeat;
+                background-color:transparent !important;
                 background-size: cover;
             }
 
+            @media screen and (max-width: 768px) {
+                h1{
+                    font-size:14px;
+                }
+            }
+
         </style>
-        
     </head>
     <body id="home" data-spy="scroll" data-target=".navbar" data-offset="100">
         <!-- navbar -->
@@ -44,74 +49,89 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>  
+            </div>     
         </nav>
         <!-- /navbar -->
         
         <!-- jumbotron -->
-        <div class="jumbotron jumbotron-fluid bg-info bg-secondary">
-            <div class="container pt-5">
-                <h1 class="display-2">MomWebDevity</h1>
-                <p class="lead">&lt;mom&gt; Programming and Parenting &lt;/mom&gt;</p>
+        <div class="jumbotron jumbotron-fluid ">
+            <div class="container pt-5 text-sm-center">
+                <div class="">
+                    <h1 class="display-2 d-none d-md-block">MomWebDevity</h1>
+                    <h1 class="display-4 d-md-none">MomWebDevity</h1>
+                    <p class="lead">&lt;mom&gt; Programming and Parenting &lt;/mom&gt;</p>
+                </div>
                 <div class="btn-group mt-4" role="group" aria-label="Callout buttons">
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register">Contact Me</button>
                     <a href="#about" class="btn btn-light btn-lg">About Me</a>
                 </div>         
-            </div>
+            </div>         
         </div>
         <!-- /jumbotron -->
 
         <!-- Main Content -->
-        <div class="container pt-4 col-lg">
-            <div class="col-lg col-xl-6">
-                <div class=" ">
-                    <h3 id="posts" class="col-lg display-4 text-center my-5 text-muted">Posts</h3>
-
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                {% block content %}
-                {% endblock %}
+        <div class="container pt-4">
+            <div class="d-lg-flex">
+                <div class="col-lg-9">
+                    <div class="">
+                        <h3 id="posts" class="display-4 text-center text-lg-left my-5 text-muted">Posts</h3>
+                    {% block content %}
+                    {% endblock %}
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg ">
-                <h3 id="about" class="display-4 text-center my-5 text-muted">About Me</h3>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </div>
-
+                
+                <div class="col-lg-3">
+                    <h3 id="about" class="display-4 text-center my-5 text-muted">About Me</h3>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </div>
+            </div>    
              <!-- gallery -->
             <div> 
-                <h2 id="gallery" class="display-4 text-center my-5 text-muted">Gallery</h2>
+                <h3 id="gallery" class="display-4 text-center my-5 text-muted">Gallery</h3>
                 <div class="row">
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3">
                             <img class="card-img-top" src="" alt="photo1">
                             <h4 class="card-title">Caption...</h4>
                         </div>              
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3">
                             <img class="card-img-top" src="" alt="photo2">
                             <h4 class="card-title">Caption...</h4>
                         </div>              
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3">
                             <img class="card-img-top" src="" alt="photo3">
                             <h4 class="card-title">Caption...</h4>
                         </div>              
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3">
                             <img class="card-img-top" src="" alt="photo4">
                             <h4 class="card-title">Caption...</h4>
                         </div>              
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3">
                             <img class="card-img-top" src="" alt="photo5">
                             <h4 class="card-title">Caption...</h4>
                         </div>              
                     </div>
-                    <div class="col-md-6 col-lg-4">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo6">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo5">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
                         <div class="card mb-3">
                             <img class="card-img-top" src="" alt="photo6">
                             <h4 class="card-title">Caption...</h4>
@@ -152,7 +172,7 @@
                 </li>
             </ul>
             </div>
-            <p class="col-md  text-center text-md-right mr-0">
+            <p class="col-md  text-center text-md-right mr-0 pt-2">
             <small>By MomWebDevity</small>
             </p>
         </div>
