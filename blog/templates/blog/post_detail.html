@@ -1,8 +1,10 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     <div class="row">
+        <h3 class="mb-4">{{ post.title }}</h3>
+        <p>{{ post.text|linebreaksbr }}</p>
         {% if post.published_date %}
-            <div class="date">
+            <div class="text-muted ml-3">
                 {{ post.published_date }}
             </div>
         {% endif %}
