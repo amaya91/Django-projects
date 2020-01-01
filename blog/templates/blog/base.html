@@ -1,39 +1,237 @@
 {% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>Ruth's blog</title>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class="page-header flex flex-col-container" >
-            
-        {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        {% endif %}
-            <h1 class="flex"><a href="/">Ruth's Story</a></h1>
+        <title>MomWebDevity</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <style>
+            .navbar .navbar-brand {
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 1rem;
+              
+                }
 
-            <ul class=" links"> 
-                <li><a href="/">Life Events</a></li>
-                <li><a href="/">Photos</a></li>
-                <li><a href="/">Bio</a></li>
-            </ul>
-            
+            .jumbotron {
+    
+                background-image:url('{{ STATIC_URL }}static/css/code.jpg');
+                background-repeat:no-repeat;
+
+                background-size: cover;
+            }
+
+        </style>
+        
+    </head>
+    <body id="home" data-spy="scroll" data-target=".navbar" data-offset="100">
+        <!-- navbar -->
+        <nav class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+            <div class="container">
+                <a class="navbar-brand order-1 mr-0" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="#home">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#about">About Me</a>
+                        <a class="nav-item nav-link" href="#gallery">Gallery</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>  
+        </nav>
+        <!-- /navbar -->
+        
+        <!-- jumbotron -->
+        <div class="jumbotron jumbotron-fluid bg-info bg-secondary">
+            <div class="container pt-5">
+                <h1 class="display-2">MomWebDevity</h1>
+                <p class="lead">&lt;mom&gt; Programming and Parenting &lt;/mom&gt;</p>
+                <div class="btn-group mt-4" role="group" aria-label="Callout buttons">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register">Contact Me</button>
+                    <a href="#about" class="btn btn-light btn-lg">About Me</a>
+                </div>         
+            </div>
         </div>
-        <div class="content container flex flex-col-container">
-            <div class="flex-row-container main">
-                <div class=" post">
+        <!-- /jumbotron -->
+
+        <!-- Main Content -->
+        <div class="container pt-4 col-lg">
+            <div class="col-lg col-xl-6">
+                <div class=" ">
+                    <h3 id="posts" class="col-lg display-4 text-center my-5 text-muted">Posts</h3>
 
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 {% block content %}
                 {% endblock %}
                 </div>
             </div>
+            <div class="col-lg ">
+                <h3 id="about" class="display-4 text-center my-5 text-muted">About Me</h3>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </div>
+
+             <!-- gallery -->
+            <div> 
+                <h2 id="gallery" class="display-4 text-center my-5 text-muted">Gallery</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo1">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo2">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo3">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo4">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo5">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card mb-3">
+                            <img class="card-img-top" src="" alt="photo6">
+                            <h4 class="card-title">Caption...</h4>
+                        </div>              
+                    </div>
+                </div>
+                
+            </div>
+            <!-- /gallery -->    
+
         </div>
-        <div>
-            <a href="/" id= "top">Back to top</a>
+        <!-- /Main Content-->
+
+        <!-- footer -->
+        <div class="row mx-auto py-3 container">
+            <div class="col-md-7  d-flex justify-content-center justify-content-md-start">
+            <ul class="nav">
+                <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                <!-- Example split danger button -->
+                <div class="btn-group dropup ">
+                    <button type="button" class="btn btn-outline-secondary">Other Links</button>
+                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">LinkedIn</a>
+                    <a class="dropdown-item" href="#">Twitter</a>
+                    <a class="dropdown-item" href="#">Facebook</a>
+                    <a class="dropdown-item" href="#">GitHub</a>
+                    </div>
+                </div>
+                </li>
+            </ul>
+            </div>
+            <p class="col-md  text-center text-md-right mr-0">
+            <small>By MomWebDevity</small>
+            </p>
         </div>
-        <footer>
-            <h2>Copyright by Ruth Amaya</h2>
-        </footer>
+        <!-- /footer -->
+
+        <!--=====================================
+        FORM MODAL
+        =====================================-->
+        <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register for" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Contact Me</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <!-- registration form -->
+                        <form>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Don't Forget!</strong> Visit the Amaya Portfolio
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <h5 class="mb-4">Basic Info</h5>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="role">I am:</label>
+                                <select class="custom-select form-control" id="role">
+                                    <option value="an employer">an Employer</option>
+                                    <option value="a fan">a Fan</option>
+                                    <option value="fellow blogger">Fellow Blogger</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <hr class="my-4">
+                            <h5 class="mb-4">Interests:</h5>
+                            
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>   
+                                    <span class="custom-control-description">Job Opportunity</span>  
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>   
+                                    <span class="custom-control-description">Internship</span>  
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>   
+                                    <span class="custom-control-description">Other</span>  
+                                </label>
+                            </div>
+                            <hr class="mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Now!</button>
+                        </form>
+                        <!-- /registration form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
     </body>
 </html>
