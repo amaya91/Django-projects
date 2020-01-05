@@ -6,10 +6,9 @@
             <div class="text-muted ml-3">
                 {{ post.published_date }}
             </div>
-            {% else %}
-            <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         {% endif %}
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+             <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
              <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-pencil-alt"></i></a>
              <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a>
         {% endif %}
@@ -23,13 +22,12 @@
         <div class="comment">
             <div class="text-muted">
                 {{ comment.created_date }}
-                {% if not comment.approved_comment %}
+                {% if user.is_superuser %}
                     <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
                     <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><i class="fas fa-check"></i></a>
                 {% endif %}
-            </div>
-            <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p>
+            </div><br />
+             <p>{{ comment.author }}{{ comment.text|linebreaks }}</p>
         </div>
         {% endif %}
     {% empty %}

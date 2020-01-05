@@ -27,5 +27,7 @@ urlpatterns = [
     path('', base_view, name="base"),
     path('signup/', signup_view, name="signup"),
     path('', include('blog.urls')),
+    
+    
 ]
 
