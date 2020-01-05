@@ -98,7 +98,36 @@
         </nav> -->
         <!-- navbar -->
          <!-- jumbotron -->
-         {% if user.is_anonymous %}
+         
+        <!-- /jumbotron -->
+        <nav class=" navbar navbar-expand-lg navbar-dark bg-primary navbar-static-top">
+            {% if user.is_authenticated %}
+            <h1 class="display-4 d-inline">MomWebDevity</h1>
+            {% endif %}
+            <div class="container">
+                <a class="navbar-brand order-1 mr-0" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav nav" >
+                        {% if user.is_authenticated %}
+                            <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>
+                            <a href="{% url 'post_list' %}" class="nav-item nav-link">Home</a>                        
+                            <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
+                            {% if user.is_superuser %}
+                            <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
+                            {% endif %}
+                            <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
+                            <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>     
+        </nav>
+        {% if user.is_anonymous %}
         <div id="jumbotron" class=" mb-0 d-flex align-items-center flex-column justify-content-center text-center min-100" id="header">
             <div class="container pt-5 text-sm-center">
                 <div class="">
@@ -112,34 +141,6 @@
             </div>         
         </div> 
         {% endif %}
-        <!-- /jumbotron -->
-        <nav class=" navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-            {% if user.is_authenticated %}
-            <h1 class="display-4 d-inline">MomWebDevity</h1>
-            {% endif %}
-            <div class="container">
-                <a class="navbar-brand order-1 mr-0" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
-                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        {% if user.is_authenticated %}
-                            <p class="nav-item nav-link"><strong>Hello, {{ user.username }}!</strong>
-                            <a href="{% url 'post_list' %}" class="nav-item nav-link">Home</a>                        
-                            <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
-                            {% if user.is_superuser %}
-                            <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
-                            {% endif %}
-                            <a href="{% url 'logout' %}" class="text-white">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a></p>
-                        {% else %}
-                            <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
-                            <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>     
-        </nav>
         
        
 
