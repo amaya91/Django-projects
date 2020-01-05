@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,400,700');
+/* optional import a lightweight Boottstrap 4 themes from Tophat --
+@import url('https://themesguide.github.io/top-hat/dist/wandoo/theme.min.css');
+@import url('https://themesguide.github.io/top-hat/dist/graymor/theme.min.css');
+@import url('https://themesguide.github.io/top-hat/dist/sunset/theme.min.css');*/
+@import url('https://themesguide.github.io/top-hat/dist/electro/theme.min.css');
+
+body {
+    font-family: 'Work Sans', 'Arial', Sans-Serif;
+}
+
+/* this template */
+.min-100 {
+    min-height: 100vh;
+}
+
+#sidemenu {
+    z-index: 1010;
+}
+
+/* only show subitems when parent is active*/
+#sidemenu .nav-item .nav-link.active + .nav .nav-item {
+    display: list-item;
+}
+#sidemenu .nav-item .nav-item {
+    display: none;
+}
+
+.anchor{
+  display: block;
+  height: 70px;
+  margin-top: -70px;
+  visibility: hidden;
+}
