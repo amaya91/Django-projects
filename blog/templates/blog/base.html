@@ -138,7 +138,8 @@
                             
                         {% if user.is_authenticated %}
                             <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>
-                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>                        
+                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>        
+                            <a href="{% url 'post_list' %}" class="nav-item nav-link">Blog</a>                 
                             <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
                             {% if user.is_superuser %}
                             <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
@@ -146,6 +147,7 @@
                             <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
                         {% else %}
                             <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
+                            
                             <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
                             <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
                         {% endif %}
