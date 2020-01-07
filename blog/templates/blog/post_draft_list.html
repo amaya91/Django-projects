@@ -7,5 +7,9 @@
             <small class="text-muted">{{ post.created_date|date:'m-d-Y' }}</small>
             <p>{{ post.text|truncatechars:200 }}</p>
         </div>
+    {% empty %}
+        <div class="display-4">No Drafts!!!
+            <p class="text-muted">Get to writing!</p>
+        </div>
     {% endfor %}
 {% endblock %}

@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 
+def home_view(request):
+    return render(request, 'blog/home.html', {})
 
 def base_view(request):
     return render(request, 'blog/base.html')
@@ -19,7 +21,7 @@ def signup_view(request):
         password = form.cleaned_data.get('password1')
         user = authenticate(username=username, password=password)
         login(request, user)
-        return redirect('base')
+        return redirect('home_view')
     return render(request, 'blog/registration/signup.html', {'form': form})
 
 
