@@ -9,10 +9,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c51a0d8e2b.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
 
         <style>
-            .navbar .navbar-brand {
+            /* .navbar .navbar-brand {
                 color: rgba(255, 255, 255, 0.85);
                 font-size: 1rem;
             
@@ -44,237 +44,210 @@
                 position: absolute;
                 bottom: 0;
                 width: 100%;
-                height: 1rem;            /* Footer height */
+                height: 1rem;         
             }
 
             #page-container {
                 position: relative;
-                min-height: 100vh;
+                min-height: 100%;
                 padding-top: 2em;
             }
 
-            #content-wrap {
-                padding-bottom: 1rem;    /* Footer height */
+             */
 
-            }    
-           
-            #gradient {
-                background: #5C258D;  /* fallback for old browsers */
-                background: -webkit-linear-gradient(to left, #4389A2, #5C258D);  /* Chrome 10-25, Safari 5.1-6 */
-                background: linear-gradient(to left, #4389A2, #5C258D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-            }    
+            
+            button, 
+            a {
+                cursor: pointer;
+            }
+
+
+            footer {
+                position: absolute;
+
+                height: 60px;
+                clear:both;
+                padding-top:20px;     
+            }
+
+            .content-wrap {
+                min-height: 100vh;  
+                padding-bottom: 15px; 
+            }   
+            
+            body {
+                font-family: "Roboto", sans-serif;
+                font-size: 17px;
+                color: white;
+                position: relative;
+            }
+            .shadow {
+                box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+            }
+            .btn-danger {
+                color: #fff;
+                background-color: #f00000;
+                border-color: #dc281e;
+            }
+            .card{
+                box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+            }
 
         </style>
     </head>
-    <body id="home" data-spy="scroll" data-target=".navbar" data-offset="100">
-        <!-- <div class="jumbotron mb-0 d-flex align-items-center flex-column justify-content-center text-center min-100" id="header">
-            <h1 class="display-3">MomWebDevity<em>!</em></h1>
-            <p>A blog about Programming and Parenting</p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="#modalAbout" data-toggle="modal" role="button">Enter</a>
-            </p>
-        </div>
-        <nav class="navbar navbar-dark bg-primary navbar-expand-md sticky-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">👋 Hey!</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Log In</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Other Options
-                            </a>
-                            <div class="dropdown-menu w-auto shadow mt-2 mx-lg-2 p-0 mx-0" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item d-flex flex-nowrap align-items-center px-0 py-3" href="#">
-                                <div class="flex-shrink-1 text-center px-3"><i class="far fa-user-circle fa-fw fa-2x"></i></div>
-                                <div class="pl-0 pr-4">
-                                    <h5 class="mb-0">New Post</h5>
-                                    Changes options and profile 
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex flex-nowrap align-items-center px-0 py-3" href="#">
-                                <div class="flex-shrink-1 text-center px-3"><i class="far fa-dot-circle fa-fw fa-2x"></i></div>
-                                <div class="pl-0 pr-4">
-                                    <h5 class="mb-0">Post List</h5>
-                                    View your saved items
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex flex-nowrap align-items-center px-0 py-3" href="#">
-                                <div class="flex-shrink-1 text-center px-3"><i class="far fa-arrow-alt-circle-right fa-fw fa-2x"></i></div>
-                                <div class="pl-0 pr-4">
-                                    <h5 class="mb-0">Heading</h5>
-                                    Some other item can go here
-                                </div>
-                            </a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="#modal1" data-toggle="modal" class="nav-link">Sign Up!</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav> -->
-        <!-- navbar -->
-        <!-- jumbotron -->
-        
-        <!-- /jumbotron -->
-        <nav class=" navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
-            {% if user.is_authenticated %}
-            <h1 class="display-4 navbar-brand ">MomWebDevity</h1>
-            {% endif %}
-            <div class="container">
-                <a class="navbar-light-brand order-1 mr-0" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
-                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav nav" >
-                            
-                        {% if user.is_authenticated %}
-                            <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>
-                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>        
-                            <a href="{% url 'post_list' %}" class="nav-item nav-link">Blog</a>                 
-                            <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
-                            {% if user.is_superuser %}
-                            <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
+    <body style=" background-color: #000000;
+    background-image: linear-gradient(315deg, #000000 0%, #414141 74%);" >
+        <nav class=" navbar navbar-expand-lg navbar-dark bg-dark shadow ">
+            <div class="container ">
+                    {% if user.is_authenticated %}
+                    <h1 class="navbar-brand ">MomWebDevity</h1>
+                    {% endif %}
+                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                        <div class="navbar-nav nav ml-auto" >
+                        
+                            {% if user.is_authenticated %}
+                                <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>      
+                                <a href="{% url 'post_list' %}" class="nav-item nav-link">Blog</a>                 
+                                <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
+                                {% if user.is_superuser %}
+                                <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
+                                {% endif %}
+                                <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
+                                <a class="nav-item nav-link" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
+                            {% else %}
+                                <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
+                                
+                                <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
+                                <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
                             {% endif %}
-                            <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
-                        {% else %}
-                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
-                            
-                            <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
-                            <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
-                        {% endif %}
+                        </div>
                     </div>
-                </div>
-            </div>     
-        </nav>
-        <div id="gradient">    
-            <!-- Main Content -->
-            <div id="page-container" class="main-content container content">
-                <div id="content-wrap">
-                    {% block content %}
-                    {% endblock %}
-                </div>    
-            </div>
-            <!-- /Main Content-->
+             
+            </div>    
+        </nav>   
+        <!-- Main Content -->
+        <div class=" container content-wrap row mt-5 mx-auto">
+            
+           
+                {% block content %}
+                {% endblock %}
+           
 
-            <!-- footer -->
-            <nav id="footer" >
-                <div class="row mx-auto py-3 container navbar ">
-                    <div class="col-md-7  d-flex justify-content-center justify-content-md-start">
-                    <ul class="nav">
-                        <li class="nav-item">
+           
+        </div>
+        
+
+        <!-- footer -->
+    
+            <footer class="row mx-auto py-3 container navbar  ">
+                <div class="col-md-7  d-flex justify-content-center justify-content-md-start">
+                <ul class="nav">
+                    <li class="nav-item">
                         <a class="nav-link btn-outline-secondary" href="{% url 'home' %}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link btn-outline-secondary" href="#gallery">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                        <!-- Example split danger button -->
-                        <div class="btn-group dropup ">
-                            <button type="button" class="btn btn-outline-secondary">Other Links</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">LinkedIn</a>
-                            <a class="dropdown-item" href="#">Twitter</a>
-                            <a class="dropdown-item" href="#">Facebook</a>
-                            <a class="dropdown-item" href="#">GitHub</a>
-                            </div>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link btn-outline-secondary text-muted" data-toggle="modal" data-target="#register">Contact Me</a>
+                    </li>
+                    <li class="nav-item">
+                  
+                    <div class="dropup btn-group ">
+                        <button type="button" class="btn btn-outline-secondary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Other Links
+                        </button>
+                        <div class="dropdown-menu">
+                            
+                        <a class="dropdown-item" href="https://linkedin.com/in/ruthamaya"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a class="dropdown-item" href="https://github.com/amaya91"><i class="fab fa-github"></i> GitHub</a>
                         </div>
-                        </li>
-                    </ul>
                     </div>
-                    <p class="col-md  text-center text-md-right mr-0 pt-2">
-                    <small>By MomWebDevity</small>
-                    </p>
+                    </li>
+                </ul>
                 </div>
-            </nav>    
-            <!-- /footer -->
+                <p class="col-md  text-center text-md-right mr-0 pt-2" >
+                <small>By Ruth Amaya</small>
+                </p>
+            </footer>
+    
+        <!-- /footer -->
 
-            <!--=====================================
-            FORM MODAL
-            =====================================-->
-            <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register for" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title" id="exampleModalLabel">Contact Me</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                        <!-- registration form -->
-                            <form>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Don't Forget!</strong> Visit the Amaya Portfolio
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <h5 class="mb-4">Basic Info</h5>
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email:</label>
-                                    <input type="email" class="form-control" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="role">I am:</label>
-                                    <select class="custom-select form-control" id="role">
-                                        <option value="an employer">an Employer</option>
-                                        <option value="a fan">a Fan</option>
-                                        <option value="fellow blogger">Fellow Blogger</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                
-                                <hr class="my-4">
-                                <h5 class="mb-4">Interests:</h5>
-                                
-                                <div class="form-check">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-indicator"></span>   
-                                        <span class="custom-control-description">Job Opportunity</span>  
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-indicator"></span>   
-                                        <span class="custom-control-description">Internship</span>  
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-indicator"></span>   
-                                        <span class="custom-control-description">Other</span>  
-                                    </label>
-                                </div>
-                                <hr class="mb-4">
-                                <button type="submit" class="btn btn-primary btn-lg">Send Now!</button>
-                            </form>
-                            <!-- /registration form -->
-                        </div>
+        <!--=====================================
+        FORM MODAL
+        =====================================-->
+        <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register for" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">Contact Me</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <!-- registration form -->
+                        <form>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Don't Forget!</strong> Visit the Amaya Portfolio
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <h5 class="mb-4">Basic Info</h5>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="role">I am:</label>
+                                <select class="custom-select form-control" id="role">
+                                    <option value="an employer">an Employer</option>
+                                    <option value="a fan">a Fan</option>
+                                    <option value="fellow blogger">Fellow Blogger</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <hr class="my-4">
+                            <h5 class="mb-4">Interests:</h5>
+                            
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>   
+                                    <span class="custom-control-description">Job Opportunity</span>  
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>   
+                                    <span class="custom-control-description">Internship</span>  
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <span class="custom-control-indicator"></span>   
+                                    <span class="custom-control-description">Other</span>  
+                                </label>
+                            </div>
+                            <hr class="mb-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Now!</button>
+                        </form>
+                        <!-- /registration form -->
                     </div>
                 </div>
             </div>
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
-        </div>   
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
     </body>
 </html>

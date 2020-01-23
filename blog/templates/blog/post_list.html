@@ -1,14 +1,36 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
-    {% for post in posts %}
-        <div id="posts" class="post">
-            <div class="text-muted ml-3">
-                {{ post.published_date }}
+
+    <div class="col-lg-8  " style="color: black;">
+        {% for post in posts %}
+            <div id="posts" class="post card mb-4">
+                <div class="card-body" > 
+                    <h3 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}" style="color: black;">{{ post.title }}</a></h3>    
+                    <p class="card-text text-muted h6">{{ post.published_date }}</p> 
+                    <p class="card-text">{{ post.text|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' pk=post.pk %}" style="color: black;">Comments: {{ post.approved_comments.count }}</a>
+                    <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-secondary ">Read More &rarr;</a>
+                </div>
             </div>
-            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>     
-            <p>{{ post.text|linebreaksbr }}</p>
-            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+        {% endfor %}
+    </div>  
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-lg-4" style="color: black;">
+        <div class="card">
+        
+            <h3 class="card-header">About Me</h3>
+            <div class="card-body">
+                
+                <img src="../../static/css/IMG_5206.JPG"  style="width:10em; height: auto; ">
+                <p class="card-text"> Hello, I am a bilingual web development student learning HTML, CSS, Javascript, jQuery, Python and frameworks such as Angular and Django. Excited to broaden my skills and begin a career in front-end development. This awesome blog is made using our Favorite full stack Framework 'Django'!</p>
+                <a href="https://linkedin.com/in/ruthamaya" class="btn btn-danger">Know more!</a>
+            </div>
+            
         </div>
-    {% endfor %}
+    </div>  
+       
+  
 {% endblock %}

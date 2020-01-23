@@ -1,18 +1,57 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <div class="row">
+<div class="col-lg-12  " style="color: black;">
+    
+        <div id="posts" class="post card mb-4">
+            <div class="card-body"> 
+                <div class="card-title row">
+                    <h3 class="col-6">{{ post.title }}</h3>    
+                    <p class="text-muted  col-6">{{ post.published_date }}</p> 
+                </div>
+                <p class="card-text">{{ post.text|linebreaksbr }}</p>
+                <div>
+                    {% if user.is_superuser %}
+                    <a class="btn btn-secondary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                    <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-pencil-alt"></i></a>
+                    <a class="btn btn-dark" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    {% endif %}
+                </div>
+                
+                <hr>
+                
+                {% for comment in post.comments.all %}
+                {% if user.is_authenticated or comment.approved_comment %}
+                    
+                    <div class="comment">
+                        
+                         <p>{{ comment.text }} <small>{{ comment.author }}</small></p>
+                    </div>
+                    {% endif %}
+                     
+                    <div class="text-muted">
+                        <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>  
+                        {% if user.is_superuser %}
+                            <a class="btn btn-dark" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
+                            <a class="btn btn-dark" href="{% url 'comment_approve' pk=comment.pk %}"><i class="fas fa-check"></i></a>
+                        {% endif %}
+                    </div> 
+                {% empty %}
+                    <p>No comments here yet :(</p>
+                    <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>  
+                {% endfor %}
+            </div>
+        </div>
+   
+</div>  
+    <!-- <div class="row" >
         <h3 class="mb-4">{{ post.title }}</h3>
         {% if post.published_date %}
             <div class="text-muted ml-3">
                 {{ post.published_date }}
             </div>
-        {% endif %}
-        {% if user.is_superuser %}
-             <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-             <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-pencil-alt"></i></a>
-             <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a>
-        {% endif %}
-        <p>{{ post.text|linebreaksbr }}</p>
+        {% endif %} -->
+       
+        <!-- <p>{{ post.text|linebreaksbr }}</p>
     </div>
     <hr>
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
@@ -32,5 +71,6 @@
         {% endif %}
     {% empty %}
         <p>No comments here yet :(</p>
-    {% endfor %}
+    {% endfor %} -->
+    
 {% endblock %}
