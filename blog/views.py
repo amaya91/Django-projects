@@ -22,7 +22,7 @@ def signup_view(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('home_view')
+            return redirect('post_list')
     else: 
         form = UserCreationForm()    
     return render(request, 'blog/registration/signup.html', {'form': form})
