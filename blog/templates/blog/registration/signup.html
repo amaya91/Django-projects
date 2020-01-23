@@ -2,32 +2,24 @@
 
 {% block content %}
 <div class="col-md-12">
-        <h2>Sign up Form</h2>
-        <form method="post">
+    <h2>Sign up Form</h2>
+    <form method="post">
         {% csrf_token %}
         {% for field in form %}       
             <p>
             {{ field.label_tag }}<br>
             {{ field }} <br>
             {% if form.errors %}
-           
-               
                 {% if field.errors %}
                 {% for error in field.errors %}
                 <p style="color: red">{{ error }}</p>
                 {% endfor %}
                 {% endif %}
-             
             {% endif %}
-      
             </p>
         {% endfor %}   
         <br>
-       
-        
-       
         <button type="submit">Sign up</button>
-        </form>
-    </div>
-
+    </form>
+</div>
 {% endblock %}

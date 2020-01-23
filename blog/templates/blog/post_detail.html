@@ -43,34 +43,5 @@
         </div>
    
 </div>  
-    <!-- <div class="row" >
-        <h3 class="mb-4">{{ post.title }}</h3>
-        {% if post.published_date %}
-            <div class="text-muted ml-3">
-                {{ post.published_date }}
-            </div>
-        {% endif %} -->
-       
-        <!-- <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-    <hr>
-    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
-    {% for comment in post.comments.all %}
-    {% if user.is_authenticated or comment.approved_comment %}
-        
-        <div class="comment">
-            <div class="text-muted">
-                {{ comment.created_date }}
-                {% if user.is_superuser %}
-                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><i class="fas fa-check"></i></a>
-                {% endif %}
-            </div><br />
-             <p>{{ comment.author }}{{ comment.text|linebreaks }}</p>
-        </div>
-        {% endif %}
-    {% empty %}
-        <p>No comments here yet :(</p>
-    {% endfor %} -->
     
 {% endblock %}

@@ -9,73 +9,19 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/c51a0d8e2b.js" crossorigin="anonymous"></script>
 
-        <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
-
-        <style>
-            /* .navbar .navbar-brand {
-                color: rgba(255, 255, 255, 0.85);
-                font-size: 1rem;
-            
-            }
-
-            #jumbotron {
-
-                background-image: url('static/css/code.jpg');
-                background-repeat:no-repeat;
-                background-color:transparent !important;
-                background-size: cover;
-            }
-
-            @media screen and (max-width: 768px) {
-                .lead{
-                    font-size: 16px;
-                }
-            }
-
-            @media screen and (min-width: 768px) {
-                 main-content { padding-top: 150px; }
-            }
-
-            .comment {
-                margin: 20px 0px 20px 20px;
-            }
-
-            #footer {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                height: 1rem;         
-            }
-
-            #page-container {
-                position: relative;
-                min-height: 100%;
-                padding-top: 2em;
-            }
-
-             */
-
-
-            
+        <style>           
             button, 
             a {
                 cursor: pointer;
             }
-
-
             footer {
                 position: absolute;
-
-                height: 60px;
-                clear:both;
-                padding-top:20px;     
+                height: 115px;    
             }
-
             .content-wrap {
                 min-height: 100vh;  
                 padding-bottom: 15px; 
-            }   
-            
+            }             
             body {
                 font-family: "Roboto", sans-serif;
                 font-size: 17px;
@@ -93,58 +39,45 @@
             .card{
                 box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
             }
-
         </style>
     </head>
-    <body style=" background-color: #000000;
-    background-image: linear-gradient(315deg, #000000 0%, #414141 74%);" >
+    <body style=" background-color: #000000; background-image: linear-gradient(315deg, #000000 0%, #414141 74%);" >
         <nav class=" navbar navbar-expand-lg navbar-dark bg-dark shadow ">
             <div class="container ">
-                    {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
                     <h1 class="navbar-brand ">MomWebDevity</h1>
-                    {% endif %}
-                    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-                        <div class="navbar-nav nav ml-auto" >
-                        
-                            {% if user.is_authenticated %}
-                                <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>      
-                                <a href="{% url 'post_list' %}" class="nav-item nav-link">Blog</a>                 
-                                <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
-                                {% if user.is_superuser %}
+                {% endif %}
+                <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+                    <div class="navbar-nav nav ml-auto" >
+                        {% if user.is_authenticated %}
+                            <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>      
+                            <a href="{% url 'post_list' %}" class="nav-item nav-link">Blog</a>                 
+                            <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
+                            {% if user.is_superuser %}
                                 <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
-                                {% endif %}
-                                <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
-                                <a class="nav-item nav-link" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
-                            {% else %}
-                                <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
-                                
-                                <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
-                                <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
                             {% endif %}
-                        </div>
+                            <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
+                            <a class="nav-item nav-link" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
+                        {% else %}
+                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
+                            <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
+                            <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
+                        {% endif %}
                     </div>
-             
+                </div>
             </div>    
         </nav>   
         <!-- Main Content -->
         <div class=" container content-wrap row mt-5 mx-auto">
-            
-           
                 {% block content %}
                 {% endblock %}
-           
-
-           
         </div>
-        
-
-        <!-- footer -->
-    
-            <footer class="row mx-auto py-3 container navbar  ">
-                <div class="col-md-7  d-flex justify-content-center justify-content-md-start">
+        <!-- footer -->    
+        <footer class="row mx-auto py-3 container navbar  ">
+            <div class="col-md-7 justify-content-center justify-content-md-start">
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link btn-outline-secondary" href="{% url 'home' %}">Home</a>
@@ -153,34 +86,21 @@
                         <a class="nav-link btn-outline-secondary text-muted" data-toggle="modal" data-target="#register">Contact Me</a>
                     </li>
                     <li class="nav-item">
-                  
-                    <div class="dropup btn-group ">
-                        <button type="button" class="btn btn-outline-secondary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Other Links
-                        </button>
-                        <div class="dropdown-menu">
-                            
-                        <a class="dropdown-item" href="https://linkedin.com/in/ruthamaya"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                        <a class="dropdown-item" href="https://github.com/amaya91"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
+                        <a class="nav-link btn-outline-secondary" href="https://linkedin.com/in/ruthamaya"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-secondary" href="https://github.com/amaya91"><i class="fab fa-github"></i> GitHub</a>
                     </li>
                 </ul>
-                </div>
-                <p class="col-md  text-center text-md-right mr-0 pt-2" >
-                <small>By Ruth Amaya</small>
-                </p>
-            </footer>
-    
+            </div>
+            <p class="col-md  text-center text-md-right mr-0 pt-2" ><small>By Ruth Amaya</small></p>
+        </footer>
         <!-- /footer -->
-
-        <!--=====================================
-        FORM MODAL
-        =====================================-->
+        <!--FORM MODAL-->
         <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register for" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header bg-info text-white">
+                    <div class="modal-header bg-secondary text-white">
                         <h5 class="modal-title" id="exampleModalLabel">Contact Me</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -188,7 +108,7 @@
                     </div>
                     <div class="modal-body">
                     <!-- registration form -->
-                        <form>
+                        <form style="color:#000000;">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <strong>Don't Forget!</strong> Visit the Amaya Portfolio
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -213,10 +133,8 @@
                                     <option value="other">Other</option>
                                 </select>
                             </div>
-                            
                             <hr class="my-4">
                             <h5 class="mb-4">Interests:</h5>
-                            
                             <div class="form-check">
                                 <label class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input">
@@ -239,9 +157,9 @@
                                 </label>
                             </div>
                             <hr class="mb-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Now!</button>
+                            <button type="submit" class="btn btn-dark btn-lg">Send Now!</button>
                         </form>
-                        <!-- /registration form -->
+                    <!-- /registration form -->
                     </div>
                 </div>
             </div>
