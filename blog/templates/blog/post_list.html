@@ -10,10 +10,6 @@
                     <h3 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}" style="color: black;">{{ post.title }}</a></h3>    
                     <p class="card-text text-muted h6">{{ post.published_date }}</p> 
                     <p class="card-text">{{ post.text|slice:":200" }}</p>
-                    <hr />
-                    <p>
-                        {{ post.comments }}
-                    </p>
                         <button id="all" type="button"class="btn" >❤</button>
                     <a href="{% url 'post_detail' pk=post.pk %}" style="color: black;">Comments: {{ post.approved_comments.count }}</a>
                     <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-secondary ">Read More &rarr;</a>
