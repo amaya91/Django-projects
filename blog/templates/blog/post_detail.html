@@ -1,47 +1,64 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 <div class="col-lg-12  " style="color: black;">
-    
-        <div id="posts" class="post card mb-4">
-            <div class="card-body"> 
-                <div class="card-title row">
-                    <h3 class="col-6">{{ post.title }}</h3>    
-                    <p class="text-muted  col-6">{{ post.published_date }}</p> 
+    {% if new_comment %}
+    <div class="alert alert-success" role="alert">
+        Your comment posted!
+    </div>
+        {% endif %}
+    <div id="posts" class="post card mb-4">
+        <div class="card-body"> 
+            <div class="card-title row">
+                <div class="col-md-9">
+                    <h3>{{ post.title }}</h3>    
                 </div>
+                <div class="col-md-3">
+                    <p class="text-muted">{{ post.published_date }}</p> 
+                </div>
+            </div>
                 <p class="card-text">{{ post.text|linebreaksbr }}</p>
-                <div>
-                    {% if user.is_superuser %}
-                    <a class="btn btn-secondary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
-                    <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-pencil-alt"></i></a>
-                    <a class="btn btn-dark" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a>
-                    {% endif %}
+            <div>
+                {% if user.is_superuser %}
+                <a class="btn btn-secondary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-pencil-alt"></i></a>
+                <a class="btn btn-dark" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a>
+                {% endif %}
+            </div>
+                
+            <hr>
+
+            <div class="row mx-0">
+                <!-- comments -->
+                {% for comment in comments %}
+                <div class="comment col-md-10" >
+                    <p><small><b>{{ comment.author }}   </b></small>{{ comment.text | linebreaksbr }}</p>
                 </div>
-                
-                <hr>
-                
-                {% for comment in post.comments.all %}
-                {% if user.is_authenticated or comment.approved_comment %}
-                    
-                    <div class="comment">
-                        
-                         <p>{{ comment.text }} <small>{{ comment.author }}</small></p>
-                    </div>
+                <div class="text-muted col-md-2 ">
+                    {% if user.is_superuser %}
+                    <a href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
-                     
-                    <div class="text-muted">
-                        <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>  
-                        {% if user.is_superuser %}
-                            <a class="btn btn-dark" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                            <a class="btn btn-dark" href="{% url 'comment_approve' pk=comment.pk %}"><i class="fas fa-check"></i></a>
-                        {% endif %}
-                    </div> 
+                </div> 
                 {% empty %}
+                <div>
                     <p>No comments here yet :(</p>
-                    <a class="btn btn-secondary" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>  
+                </div>
                 {% endfor %}
+            </div> 
+            <div class="col-lg-12 ">
+                <h6>Leave a comment</h6>
+                {% load crispy_forms_tags %}
+                <form method="post" style="margin-top: 1.3em;">
+            
+                        {{ comment_form | crispy }}{% csrf_token %}
+                    
+                    
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
             </div>
         </div>
-   
+    </div>
 </div>  
-    
-{% endblock %}
+{% endblock %}                      
+              
+         
+
