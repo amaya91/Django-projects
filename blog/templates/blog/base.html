@@ -45,7 +45,7 @@
         <nav class=" navbar navbar-expand-lg navbar-dark bg-dark shadow ">
             <div class="container ">
                 {% if user.is_authenticated %}
-                    <h1 class="navbar-brand ">MomWebDevity</h1>
+                    <a class="navbar-brand " href="{% url 'home' %}">MomWebDevity</a>
                 {% endif %}
                 <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -60,7 +60,7 @@
                                 <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
                             {% endif %}
                             <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
-                            <a class="nav-item nav-link" href="https://www.teamtreehouse.com" target="_blank">Amaya Portfolio</a>
+                            <a class="nav-item nav-link" href="#" target="_blank">Amaya Portfolio</a>
                         {% else %}
                             <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
                             <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>

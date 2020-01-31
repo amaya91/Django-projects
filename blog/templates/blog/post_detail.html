@@ -30,8 +30,24 @@
             <div class="row mx-0">
                 <!-- comments -->
                 {% for comment in comments %}
-                <div class="comment col-md-10" >
-                    <p><small><b>{{ comment.author }}   </b></small>{{ comment.text | linebreaksbr }}</p>
+                <style>
+                    .speech-bubble {
+                        position: relative;
+                        background: lightgray;
+                        border-radius: .4em;
+                    }
+
+                    .speech-bubble:after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 0;
+                        height: 0;
+                    }
+                </style>
+                <div class="comment col-md-10 mx-0" >
+                    <p class="mb-0"><small ><b>{{ comment.author }}   </b></small></p><p class="speech-bubble">{{ comment.text | linebreaksbr }}</p>
                 </div>
                 <div class="text-muted col-md-2 ">
                     {% if user.is_superuser %}
