@@ -3,6 +3,18 @@
 
 {% block content %}
 
+    <div class="col-lg-12" style="color: black;">
+        <div class="card mb-4">
+            <div class="card-body">    
+                <h3 class="card-title text-center">Quote for Inspiration</h3>
+                <blockquote class="blockquote text-center">
+                    <p class="mb-0 mt-2">&quot; {{ quoteText }}&quot;</p>
+                    <p class="blockquote-footer">{{ quoteAuthor }}</p>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
     <div class="col-lg-8  " style="color: black;">
         {% for post in posts %}
             <div id="posts" class="post card mb-4">
@@ -20,6 +32,7 @@
 
     <!-- Sidebar Widgets Column -->
     <div class="col-lg-4" style="color: black;">
+
         <div class="card">
         
             <h3 class="card-header">About Me</h3>

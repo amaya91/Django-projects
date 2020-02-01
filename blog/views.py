@@ -7,9 +7,16 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from blog.form import SignUpForm
+import requests
 
 def home_view(request):
-    return render(request, 'blog/home.html', {})
+    response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
+    getQuote = response.json()
+    print(getQuote)
+    return render(request, 'blog/home.html', {
+        'quoteText': getQuote['quoteText'],
+        'quoteAuthor': getQuote['quoteAuthor']
+    })
 
 def base_view(request):
     return render(request, 'blog/base.html')
@@ -31,7 +38,14 @@ def signup_view(request):
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    response = requests.get('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
+    getQuote = response.json()
+    print(getQuote)
+    return render(request, 'blog/post_list.html', {
+        'posts': posts,
+        'quoteText': getQuote['quoteText'],
+        'quoteAuthor': getQuote['quoteAuthor']
+    })
 
 def post_detail(request, pk):
     template_name = 'blog/post_detail.html'
