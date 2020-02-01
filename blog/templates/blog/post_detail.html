@@ -19,7 +19,7 @@
                 <p class="card-text">{{ post.text|linebreaksbr }}</p>
             <div>
                 {% if user.is_superuser %}
-                <a class="btn btn-secondary" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+                <a class="btn btn-dark" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
                 <a class="btn btn-dark" href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-pencil-alt"></i></a>
                 <a class="btn btn-dark" href="{% url 'post_remove' pk=post.pk %}"><i class="fas fa-trash-alt"></i></a>
                 {% endif %}
@@ -70,7 +70,7 @@
                 </div>
                 <div class="text-muted col-md-2 ">
                     {% if user.is_superuser %}
-                    <a href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{% url 'comment_remove' pk=comment.pk %}" class="btn-light"><i class="fas fa-trash-alt"></i></a>
                     {% endif %}
                 </div> 
                 {% empty %}
