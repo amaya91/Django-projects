@@ -54,17 +54,17 @@
                     <div class="navbar-nav nav ml-auto" >
                         {% if user.is_authenticated %}
                             <strong class="nav-item nav-link">Hello, {{ user.username }}!</strong>      
-                            <a href="{% url 'post_list' %}" class="nav-item nav-link">Blog</a>                 
-                            <a href="{% url 'post_new' %}" class="nav-item nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
+                            <a href="{% url 'post_list' %}" class="nav-item btn-sm nav-link">Posts</a>                 
+                            <a href="{% url 'post_new' %}" class="nav-item btn-sm nav-link">Create a Post<i class="far fa-plus-square pl-2"></i></a>
                             {% if user.is_superuser %}
-                                <a href="{% url 'post_draft_list' %}" class="nav-item nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
+                                <a href="{% url 'post_draft_list' %}" class="nav-item btn-sm nav-link">View Drafts<i class="fas fa-edit pl-2"></i></a>
                             {% endif %}
-                            <a href="{% url 'logout' %}" class="nav-item nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
-                            <a class="nav-item nav-link" href="#" target="_blank">Amaya Portfolio</a>
+                            <a href="{% url 'logout' %}" class="nav-item btn-sm nav-link">Log Out<i class="fas fa-sign-out-alt pl-2"></i></a>
+                            <a class="nav-item btn-sm nav-link" href="#" target="_blank">Amaya Portfolio</a>
                         {% else %}
-                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>  
-                            <a href="{% url 'login' %}" class="nav-item nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
-                            <a href="{% url 'signup' %}" class="nav-item nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
+                            <a href="{% url 'home' %}" class="nav-item btn-sm nav-link">Home</a>  
+                            <a href="{% url 'login' %}" class="nav-item btn-sm nav-link">Log In<i class="fas fa-sign-in-alt pl-2"></i></a>
+                            <a href="{% url 'signup' %}" class="nav-item btn-sm nav-link">Sign Up<i class="fas fa-user-plus pl-2"></i></a>
                         {% endif %}
                     </div>
                 </div>
@@ -76,20 +76,17 @@
                 {% endblock %}
         </div>
         <!-- footer -->    
-        <footer class="row mx-auto py-3 container navbar  ">
-            <div class="col-md-7 justify-content-center justify-content-md-start">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn-outline-secondary" href="{% url 'home' %}">Home</a>
-                    </li>
+        <footer class="row mx-auto pb-3 container navbar py-0 ">
+            <div class="col-md-7 ">
+                <ul class="nav justify-content-center justify-content-md-start">
                     <li class="nav-item"> 
-                        <a class="nav-link btn-outline-secondary text-muted" data-toggle="modal" data-target="#register">Contact Me</a>
+                        <a class=" btn-sm btn-outline-secondary py-0" data-toggle="modal" data-target="#register">Contact Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-secondary" href="https://linkedin.com/in/ruthamaya"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a class=" btn-sm btn-outline-secondary py-0" href="https://linkedin.com/in/ruthamaya"><i class="fab fa-linkedin"></i> LinkedIn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-outline-secondary" href="https://github.com/amaya91"><i class="fab fa-github"></i> GitHub</a>
+                        <a class=" btn-sm btn-outline-secondary py-0" href="https://github.com/amaya91"><i class="fab fa-github"></i> GitHub</a>
                     </li>
                 </ul>
             </div>

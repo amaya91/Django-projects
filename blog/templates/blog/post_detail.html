@@ -45,6 +45,25 @@
                         width: 0;
                         height: 0;
                     }
+                    textarea {
+                        width: 11em;
+                        height: 3em;
+                        background-color: lightgray;
+                    }
+                    
+                    @media screen and (min-width: 480px) {
+                        textarea {
+                            width: 20em;
+                            height: 3em;
+                        }
+                    }
+                    @media screen and (min-width: 768px) {
+                        textarea {
+                            width: 30em;
+                            height: 3em;
+                        }
+                    }
+
                 </style>
                 <div class="comment col-md-10 mx-0" >
                     <p class="mb-0"><small ><b>{{ comment.author }}   </b></small></p><p class="speech-bubble">{{ comment.text | linebreaksbr }}</p>
@@ -61,13 +80,9 @@
                 {% endfor %}
             </div> 
             <div class="col-lg-12 ">
-                <h6>Leave a comment</h6>
-        
-                <form method="post" style="margin-top: 1.3em;">
-            
+                <h6 class="mb-0">Leave a comment</h6>
+                <form method="post" class="mt-1">
                         {{ comment_form.as_p }}{% csrf_token %}
-                    
-                    
                     <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
             </div>
